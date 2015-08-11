@@ -217,7 +217,7 @@ sub transactionPOST {
 	my $headers = {Content_Type => 'application/json',apikey => $self->{apikey},token=>$self->{token}, Authorization=> $authtoken->{authtoken},nonce=>"$authtoken->{nonce}",timestamp=>$authtoken->{timestamp}};
 	
 	print Dumper($headers);	
-	print Dumper($payload)
+	print Dumper($payload);
 	$ws->POST("$path",($payload,$headers));
 	
 	my $res= decode_json($ws->responseContent());

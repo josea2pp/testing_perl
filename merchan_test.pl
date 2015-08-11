@@ -10,13 +10,13 @@ use Digest::SHA qw(hmac_sha1_hex hmac_sha256_hex hmac_sha256_base64);
 use Cpanel::JSON::XS qw(encode_json decode_json);
 use MIME::Base64;
 
-use lib '/home/rene/git/chasquimobile_webservices/library/lib';
+use lib 'lib';
 use Merchant::Payeezy;
  
 
-my $pay= Payeezy->new(apikey=>'tndJGAOHNnRAgmiRutMXAvJPemBWxeve',
-					  apisecret=>'6f7c2ffebd329496056640c96fec7ca9a13e34a05acffeb343a77ac4e93d9d00',
-					  token=>'fdoa-51c7cb34581916f8372a98da9210207f51c7cb34581916f8');
+my $pay= Payeezy->new(apikey=>'api key here',
+					  apisecret=>'api secret here',
+					  token=>'token here');
 
 my %request = (
        			'amount'=>"1299",
