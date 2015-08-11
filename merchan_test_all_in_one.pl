@@ -14,7 +14,7 @@ use MIME::Base64;
 my $time= DateTime->now;
 #
 my $ws= REST::Client->new();
-	my $host='https://api.payeezy.com';
+	my $host='https://api-cert.payeezy.com';
 	my$path="/v1/transactions";
 	$ws->setHost($host);
 #
