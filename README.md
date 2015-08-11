@@ -1,2 +1,2 @@
-# perl_payeeze
-perl library for payeeze merchant
+# perl_payeezy
+perl library for payeezy merchant
