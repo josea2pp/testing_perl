@@ -3,15 +3,17 @@
 use REST::Client;
 
 use Data::Dumper;
-use DateTime;
+#use DateTime;
 use Crypt::Random qw( makerandom ); 
 use Digest::SHA qw(hmac_sha1_hex hmac_sha256_hex hmac_sha256_base64);
 use Cpanel::JSON::XS qw(encode_json decode_json);
 use MIME::Base64;
-
+use Time::HiRes qw(gettimeofday);
  
 
-my $time= DateTime->now;
+my $time=gettimeofday;
+
+#my $time= DateTime->now;
 #
 my $ws= REST::Client->new();
 	my $host='https://api-cert.payeezy.com';
@@ -64,7 +66,9 @@ my $jsonobj='{
 
 #print $jsonobj;
 ## Get an expires at time, and set it for 5 minutes in the future.
-	my $expires_at = ($time->epoch() + (5*60));
+#	my $expires_at = ($time->epoch() + (5*60));
+        my $expires_at = int(gettimeofday * 1000);
+
 #		
 #		
 	my $hmacdata ="";
@@ -86,7 +90,7 @@ print $hmacdata."\n";
 	
 my $headers = {Content_Type => 'application/json',apikey => $apikey,token=>$token, Authorization=> $auth,nonce=>"$nonce",timestamp=>"$expires_at"};
 
-print Dumper($headers)."\n";	
+	print Dumper($headers)."\n";	
 
 	$ws->POST("$path",($jsonobj,$headers));
 	
